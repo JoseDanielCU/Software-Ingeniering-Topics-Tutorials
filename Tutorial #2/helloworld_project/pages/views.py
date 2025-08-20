@@ -103,3 +103,31 @@ class ProductCreateView(View):
         else:
             viewData = {"title": "Create product", "form": form}
             return render(request, self.template_name, viewData)
+
+
+class CartView(View):
+    template_name = 'cart/index.html'
+
+    def get(self, request):
+        # Simulated database for products
+        products = {}
+        products[121] = {'name': 'Tv samsung', 'price': '1000'}
+        products[11] = {'name': 'Iphone', 'price': '2000'}
+
+        # Get cart products from session
+        cart_products = {}
+        cart_product_data = request.session.get('cart_product_data', {})
+
+        for key, product in products.items():
+            if str(key) in cart_product_data.keys():
+                cart_products[key] = product
+
+                # Prepare data for the view
+        view_data = {
+            'title': 'Cart - Online Store',
+            'subtitle': 'Shopping Cart',
+            'products': products,
+            'cart_products': cart_products
+        }
+
+        return render(request, self.template_name, view_data)
