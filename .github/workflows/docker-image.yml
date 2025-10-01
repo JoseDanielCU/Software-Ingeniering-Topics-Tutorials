@@ -23,9 +23,7 @@ jobs:
 
       - name: Build the Docker image
         run: |
-          docker build Tutorial #6 \
-            --file Tutorial #6/Dockerfile \
-            --tag mlgdaniel/trabajo_topicos_ingenieria_software:latest
+          docker build "Tutorial #6" --file "Tutorial #6/Dockerfile" --tag mlgdaniel/trabajo_topicos_ingenieria_software:latest
 
       - name: Push Docker image
         run: |
