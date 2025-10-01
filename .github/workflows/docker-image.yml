@@ -24,7 +24,7 @@ jobs:
       - name: Build the Docker image
         run: |
           docker build randomquotes \
-            --file randomquotes/Dockerfile \
+            --file Tutorial #6/Dockerfile \
             --tag mlgdaniel/trabajo_topicos_ingenieria_software:latest
 
       - name: Push Docker image
